@@ -64,7 +64,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"📂 [{get_size(file.file_size)}] ✧ {file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
             ]
             for file in files
@@ -83,6 +83,13 @@ async def next_page(bot, query):
             for file in files
         ]
 
+    btn.insert(0,
+        [
+            InlineKeyboardButton(f"🔮 {search}", "dupe"),
+            InlineKeyboardButton(f"🗂️ Files: {len(files)}", "dupe")
+        ]
+    )
+
     if 0 < offset <= 10:
         off_set = 0
     elif offset == 0:
@@ -92,6 +99,7 @@ async def next_page(bot, query):
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+             InlineKeyboardButton(text=f"Check PM!", url=f"https://t.me/{temp.U_NAME}"),
              InlineKeyboardButton(f"📃 Pages {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}",
                                   callback_data="pages")]
         )
