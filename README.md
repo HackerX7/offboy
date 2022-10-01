@@ -85,4 +85,4 @@ You can deploy this bot anywhere.
 [![telegram badge](https://img.shields.io/badge/Telegram-Channel-30302f?style=flat&logo=telegram)](https://telegram.dog/TeamEvamaria)
 
 ## Credits 
-* [![SᴘɪDᴇʀ️.🇮🇳.HᴀᴄKᴇʀ Jʀ](https://img.shields.io/static/v1?label=EvaMaria&message=devs&color=critical)](https://telegram.dog/EvaMariaDevs)
+* [![S](https://img.shields.io/static/v1?label=HacKer_Jr&message=devs&color=critical)](https://telegram.dog/Hacker_Jr)
