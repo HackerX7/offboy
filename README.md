@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://telegra.ph/file/f1593d068b1be7f211776.jpg" alt="Eva Maria Logo">
+  <img src="https://telegra.ph/file/f1593d068b1be7f211776.jpg" alt="Nancy Logo">
 </p>
 <h1 align="center">
-  <b>Eva Maria Bot</b>
+  <b>Nᴀɴᴄʏ 🎀 낸시 Bot</b>
 </h1>
 
 
