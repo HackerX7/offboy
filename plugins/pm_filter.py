@@ -813,8 +813,8 @@ async def advantage_spell_chok(msg):
         photo="https://telegra.ph/file/9965d1aa79593e56f212a.jpg", 
         caption="I couldn't find anything related to that\nDid you mean any one of these?",
         reply_markup=InlineKeyboardMarkup(btn))
-        await asyncio.sleep(10)
-        await m.delete()
+    await asyncio.sleep(10)
+    await m.delete()
 
 async def manual_filters(client, message, text=False):
     group_id = message.chat.id
