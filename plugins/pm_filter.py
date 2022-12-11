@@ -809,8 +809,12 @@ async def advantage_spell_chok(msg):
         )
     ] for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spolling#{user}#close_spellcheck')])
-    await msg.reply_photo(photo="https://telegra.ph/file/9965d1aa79593e56f212a.jpg", caption="I couldn't find anything related to that\nDid you mean any one of these?",
-                reply_markup=InlineKeyboardMarkup(btn))
+    hj = await msg.reply_photo(
+        photo="https://telegra.ph/file/9965d1aa79593e56f212a.jpg", 
+        caption="I couldn't find anything related to that\nDid you mean any one of these?",
+        reply_markup=InlineKeyboardMarkup(btn))
+        await asyncio.sleep(20)
+        await m.delete()
 
 async def manual_filters(client, message, text=False):
     group_id = message.chat.id
