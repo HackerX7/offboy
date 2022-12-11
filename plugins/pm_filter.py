@@ -415,7 +415,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('➕ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘs ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('🔍 Sᴇᴀʀᴄʜ', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria')
+            InlineKeyboardButton('🎥 Cʜᴀɴɴᴇʟ', url='https://t.me/Team_KL')
         ], [
             InlineKeyboardButton('⚙️ Hᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data='about')
@@ -446,7 +446,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons = [[
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria'),
+            InlineKeyboardButton('🎥 Cʜᴀɴɴᴇʟ', url='https://t.me/Team_KL'),
             InlineKeyboardButton('♥️ Source', callback_data='source')
         ], [
             InlineKeyboardButton('🏠 Home', callback_data='start'),
@@ -675,11 +675,17 @@ async def auto_filter(client, msg, spoll=False):
         req = message.from_user.id if message.from_user else 0
         btn.append(
             [InlineKeyboardButton(text=f"🗓 1/{math.ceil(int(total_results) / 10)}", callback_data="pages"),
+             InlineKeyboardButton(text="CHECK PM!", url=f"https://t.me/{temp.U_NAME}"),
              InlineKeyboardButton(text="NEXT ⏩", callback_data=f"next_{req}_{key}_{offset}")]
         )
     else:
         btn.append(
-            [InlineKeyboardButton(text="🗓 1/1", callback_data="pages")]
+            [InlineKeyboardButton(text="🗓 1/1", callback_data="pages"),
+             InlineKeyboardButton(text="CHECK PM!", url=f"https://t.me/{temp.U_NAME}"),]
+        )
+        btn.insert(0, 
+            [InlineKeyboardButton(f"🔮 {search}", "dupe"),
+             InlineKeyboardButton(f"🗂️ Files: {total_results}", "dupe")]
         )
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
