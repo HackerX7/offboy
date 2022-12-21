@@ -371,7 +371,7 @@ async def settings(client, message):
         return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
     chat_type = message.chat.type
 
-    if chat_type == enums.ChatType.PRIVATE:
+    if chat_type == "private":
         grpid = await active_connection(str(userid))
         if grpid is not None:
             grp_id = grpid
@@ -385,7 +385,7 @@ async def settings(client, message):
             await message.reply_text("I'm not connected to any groups!", quote=True)
             return
 
-    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+    elif chat_type in ["group", "supergroup"]:
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -394,8 +394,8 @@ async def settings(client, message):
 
     st = await client.get_chat_member(grp_id, userid)
     if (
-            st.status != enums.ChatMemberStatus.ADMINISTRATOR
-            and st.status != enums.ChatMemberStatus.OWNER
+            st.status != "administrator"
+            and st.status != "creator"
             and str(userid) not in ADMINS
     ):
         return
@@ -472,11 +472,9 @@ async def settings(client, message):
             text=f"<b>Change Your Settings for {title} As Your Wish ⚙</b>",
             reply_markup=reply_markup,
             disable_web_page_preview=True,
-            parse_mode=enums.ParseMode.HTML,
-            reply_to_message_id=message.id
-        )
-
-
+            parse_mode="html",
+            reply_to_message_id=message.message_id
+        )            
 
 @Client.on_message(filters.command('set_template'))
 async def save_template(client, message):
