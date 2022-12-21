@@ -19,9 +19,7 @@ logger.setLevel(logging.INFO)
 
 BTN_URL_REGEX = re.compile(
     r"(\[([^\[]+?)\]\((buttonurl|buttonalert):(?:/{0,2})(.+?)(:same)?\))"
-)
-
-imdb = Cinemagoer() 
+) 
 
 BANNED = {}
 SMART_OPEN = '“'
