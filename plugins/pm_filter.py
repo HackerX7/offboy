@@ -366,12 +366,36 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             else:
-                await client.send_cached_media(
-                    chat_id=query.from_user.id,
+                file_send=await client.send_cached_media(
+                    chat_id=FILE_CHANNEL,
                     file_id=file_id,
-                    caption=f_caption,
-                    protect_content=True if ident == "filep" else False 
+                    caption=script.CHANNEL_CAP.format(query.from_user.mention, title, query.message.chat.title),
+                    protect_content=True if ident == "filep" else False,
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("🔥 ᴄʜᴀɴɴᴇʟ 🔥", url=(MAIN_CHANNEL))
+                            ]
+                        ]
+                    )
                 )
+                Joel_tgx = await query.message.reply_text(
+                    script.FILE_MSG.format(query.from_user.mention, title, size),
+                    parse_mode=enums.ParseMode.HTML,
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                         [
+                          InlineKeyboardButton('📥 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 𝖫𝗂𝗇𝗄 📥 ', url = file_send.link)
+                       ],[
+                          InlineKeyboardButton("⚠️ 𝖢𝖺𝗇'𝗍 𝖠𝖼𝖼𝖾𝗌𝗌 ❓ 𝖢𝗅𝗂𝖼𝗄 𝖧𝖾𝗋𝖾 ⚠️", url=(FILE_FORWARD))
+                         ]
+                        ]
+                    )
+                )
+                if settings['auto_delete']:
+                    await asyncio.sleep(600)
+                    await Joel_tgx.delete()
+                    await file_send.delete()
                 await query.answer('Check PM, I have sent files in pm', show_alert=True)
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
